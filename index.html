@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anwar Ali Family Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000; /* Black background */
+            color: #d4d4d4; /* Light grey text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(45deg, #000000, #000000); /* Keeps the background black */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #5c3e1f; /* Royal dark red */
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for elegance */
+            margin: 0;
+        }
+
+        /* Family Member Buttons */
+        #family-members {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-btn {
+            font-family: 'Cinzel', serif;
+            background-color: #8B0000; /* Dark Red for a royal look */
+            color: #f8f8f8;
+            border: 2px solid #fff;
+            padding: 15px 25px;
+            font-size: 1.25rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .main-btn:hover {
+            background-color: #B22222; /* Lighter Red on hover */
+            transform: scale(1.1);
+        }
+
+        .main-btn:active {
+            background-color: #FF4500; /* Orange-Red on click */
+        }
+
+        /* Pop-up Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #141414; /* Black background for the pop-up */
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            z-index: 1000;
+            width: 50%;
+            max-height: 80%;
+            overflow-y: auto;
+            animation: popup 0.3s ease-in-out;
+        }
+
+        @keyframes popup {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #B22222; /* Lighter Red */
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.1rem;
+            margin: 5px 0;
+            color: #d4d4d4; /* Light grey text */
+        }
+
+        .close-btn {
+            background-color: #B22222; /* Red */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: #8B0000; /* Darker Red */
+            transform: scale(1.1);
+        }
+
+        .close-btn:active {
+            background-color: #FF4500; /* Orange-Red on click */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Khaandaan of Anwar Ali 👑</h1>
+    </header>
+
+    <div id="family-members">
+        <button class="main-btn" id="anwar-btn">Anwar Ali & Family</button>
+        <button class="main-btn" id="rasheed-btn">Rasheed & Family</button>
+        <button class="main-btn" id="mujeeb-btn">Mujeeb & Family</button>
+        <button class="main-btn" id="ayaz-btn">Ayaz & Family</button>
+        <button class="main-btn" id="sons-law-btn">Son-in-Laws</button>
+        <button class="main-btn" id="daughters-law-btn">Daughter-in-Laws</button>
+        <button class="main-btn" id="grandchildrenR-btn">Grandchildren of Rasheed</button>
+        <button class="main-btn" id="grandchildrenM-btn">Grandchildren of Mujeeb</button>
+        <button class="main-btn" id="grandchildrenA-btn">Grandchildren of Ayaz</button>
+    </div>
+
+    <!-- Pop-up for Anwar Ali & Family -->
+    <div id="anwar-popup" class="popup">
+        <div class="popup-content">
+            <h2>Anwar Ali & Family</h2>
+            <ul>
+                <li><strong>Name:</strong> Anwar Ali</li>
+                <li><strong>Wife:</strong> Iltifatun Nisa</li>
+                <li><strong>Children:</strong> Wasiqun Nisa, Mohammad Rasheed Hashmi, Mohammad Mujeeb Hashmi, Mohammad Ayaz Hashmi</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('anwar-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Rasheed & Family -->
+    <div id="rasheed-popup" class="popup">
+        <div class="popup-content">
+            <h2>Rasheed & Family</h2>
+            <ul>
+                <li><strong>Name:</strong> Mohammad Rasheed Hashmi</li>
+                <li><strong>Wife:</strong> Sayyada Khatoon</li>
+                <li><strong>Children:</strong> Nazira Khatoon, Hajira Khatoon, Mohammad Arshad</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('rasheed-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Mujeeb & Family -->
+    <div id="mujeeb-popup" class="popup">
+        <div class="popup-content">
+            <h2>Mujeeb & Family</h2>
+            <ul>
+                <li><strong>Name:</strong> Mohammad Mujeeb Hashmi</li>
+                <li><strong>Wife:</strong> Qamar Jahan</li>
+                <li><strong>Children:</strong> Mohammad Mohsin, Fauzia Khatoon, Razia Khatoon, Arbia Khatoon, Maria Khatoon, Mohammad Monis</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('mujeeb-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Ayaz & Family -->
+    <div id="ayaz-popup" class="popup">
+        <div class="popup-content">
+            <h2>Ayaz & Family</h2>
+            <ul>
+                <li><strong>Name:</strong> Mohammad Ayaz Hashmi</li>
+                <li><strong>Wife:</strong> Nazira Khatoon</li>
+                <li><strong>Children:</strong> Mohammad Anas</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('ayaz-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Son-in-Laws -->
+    <div id="sons-law-popup" class="popup">
+        <div class="popup-content">
+            <h2>Son-in-Laws</h2>
+            <ul>
+                <li>Shamshad Ali Khan (son-in-law of Md.Rasheed Hashmi)</li>
+                <li>Mohammad Amir (son-in-law of Md.Mujeeb Hashmi)</li>
+                <li>Syed Ziauddin Hussain (son-in-law of Md.Mujeeb Hashmi)</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('sons-law-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Daughter-in-Laws -->
+    <div id="daughters-law-popup" class="popup">
+        <div class="popup-content">
+            <h2>Daughter-in-Laws</h2>
+            <ul>
+                <li>Taiba Maryam (daughter-in-law of Md. Mujeeb Hashmi)</li>
+                <li>Hira Fatime (daughter-in-law of Md. Mujeeb Hashmi)</li>
+                <li>Zulekha Anas (daughter-in-law of Md. Ayaz Hashmi)</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('daughters-law-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Grandchildren of Rasheed -->
+    <div id="grandchildrenR-popup" class="popup">
+        <div class="popup-content">
+            <h2>Grandchildren of Rasheed</h2>
+            <ul>
+                <li><strong>Name:</strong> Arham Rasheed</li>
+                <li><strong>Name:</strong> Akram Rasheed</li>
+                <li><strong>Name:</strong> Mohd. Saquib Khan</li>
+                <li><strong>Name:</strong> Nazreen Bano</li>
+                <li><strong>Name:</strong> Mohd. Aquib Khan</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('grandchildrenR-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Grandchildren of Mujeeb -->
+    <div id="grandchildrenM-popup" class="popup">
+        <div class="popup-content">
+            <h2>Grandchildren of Mujeeb</h2>
+            <ul>
+                <li><strong>Name:</strong> Mohammad Asjad</li>
+                <li><strong>Name:</strong> Kaab Anwar</li>
+                <li><strong>Name:</strong> Hidaya Mohsin</li>
+                <li><strong>Name:</strong> Moosa Mujeeb</li>
+                <li><strong>Name:</strong> Mustafa Mujeeb</li>
+                <li><strong>Name:</strong> Tooba Amir</li>
+                <li><strong>Name:</strong> Ahmad Taha</li>
+                <li><strong>Name:</strong> Arham Rasheed</li>
+                <li><strong>Name:</strong> Akram Rasheed</li>
+                <li><strong>Name:</strong> Mahi</li>
+                <li><strong>Name:</strong> Juveria Fatima</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('grandchildrenM-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Grandchildren of Ayaz -->
+    <div id="grandchildrenA-popup" class="popup">
+        <div class="popup-content">
+            <h2>Grandchildren of Ayaz</h2>
+            <ul>
+                <li><strong>Name:</strong> Dawood Ayaz</li>
+                <li><strong>Name:</strong> Ibrahim Ayaz</li>
+            </ul>
+            <button class="close-btn" onclick="closePopup('grandchildrenA-popup')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Show Pop-up functions
+        document.getElementById("anwar-btn").addEventListener("click", function() {
+            showPopup('anwar-popup');
+        });
+
+        document.getElementById("rasheed-btn").addEventListener("click", function() {
+            showPopup('rasheed-popup');
+        });
+
+        document.getElementById("mujeeb-btn").addEventListener("click", function() {
+            showPopup('mujeeb-popup');
+        });
+
+        document.getElementById("ayaz-btn").addEventListener("click", function() {
+            showPopup('ayaz-popup');
+        });
+
+        document.getElementById("sons-law-btn").addEventListener("click", function() {
+            showPopup('sons-law-popup');
+        });
+
+        document.getElementById("daughters-law-btn").addEventListener("click", function() {
+            showPopup('daughters-law-popup');
+        });
+
+        document.getElementById("grandchildrenR-btn").addEventListener("click", function() {
+            showPopup('grandchildrenR-popup');
+        });
+
+        document.getElementById("grandchildrenM-btn").addEventListener("click", function() {
+            showPopup('grandchildrenM-popup');
+        });
+
+        document.getElementById("grandchildrenA-btn").addEventListener("click", function() {
+            showPopup('grandchildrenA-popup');
+        });
+
+        // Function to show pop-up
+        function showPopup(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        // Function to close pop-up
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
