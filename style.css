@@ -1,0 +1,102 @@
+// Family Data
+const data = {
+    name: "Anwar Ali",
+    details: "The patriarch of the family.",
+    wife: {
+        name: "Iltifatun Nisa",
+        details: "Wife of Anwar"
+    },
+    children: [
+        {
+            name: "Wasiqun Nisa",
+            details: "Daughter of Anwar.",
+            wife: "N/A",
+            children: []
+        },
+        {
+            name: "Mohammad Rasheed Hashmi",
+            wife: "Sayyada Khatoon",
+            details: "Son of Anwar Ali.",
+            children: [
+                { name: "Nazira Khatoon", details: "Child of Rasheed." },
+                { name: "Hajira Khatoon", details: "Child of Rasheed." },
+                { name: "Mohammad Arshad", details: "Child of Rasheed." }
+            ]
+        },
+        {
+            name: "Mohammad Mujeeb Hashmi",
+            wife: "Qamar Jahan",
+            details: "Son of Anwar Ali.",
+            children: [
+                { name: "Mohammad Mohsin", details: "Child of Mujeeb." },
+                { name: "Fauzia Khatoon", details: "Child of Mujeeb." },
+                { name: "Razia Khatoon", details: "Child of Mujeeb." },
+                { name: "Arbia Khatoon", details: "Child of Mujeeb." },
+                { name: "Maria Khatoon", details: "Child of Mujeeb." },
+                { name: "Mohammad Monis", details: "Child of Mujeeb." }
+            ]
+        },
+        {
+            name: "Mohammad Ayaz Hashmi",
+            wife: "Nazira Khatoon",
+            details: "Son of Anwar Ali.",
+            children: [
+                { name: "Mohammad Anas", details: "Child of Ayaz." }
+            ]
+        }
+    ]
+};
+
+// Function to open the pop-up and display dynamic content
+function openFamilyPopup(id) {
+    const family = data.children.find(child => child.name.toLowerCase().replace(" ", "") === id.toLowerCase());
+
+    // Update the pop-up with family details dynamically
+    document.getElementById("family-name").innerText = family.name;
+    document.getElementById("family-details").innerText = family.details;
+    document.getElementById("wife-name").innerText = family.wife ? "Wife: " + family.wife : "Wife: N/A";
+
+    const childrenList = document.getElementById("children-list");
+    childrenList.innerHTML = "";
+
+    if (family.children.length > 0) {
+        family.children.forEach(child => {
+            const li = document.createElement("li");
+            li.innerHTML = `${child.name}: ${child.details}`;
+            childrenList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement("li");
+        li.innerHTML = "No children listed.";
+        childrenList.appendChild(li);
+    }
+
+    document.getElementById("family-popup").style.display = "flex";
+}
+
+// Show specific pop-up for family members
+document.getElementById("anwar-btn").addEventListener("click", function() {
+    openFamilyPopup('Anwar Ali');
+});
+
+document.getElementById("rasheed-btn").addEventListener("click", function() {
+    openFamilyPopup('Mohammad Rasheed Hashmi');
+});
+
+document.getElementById("mujeeb-btn").addEventListener("click", function() {
+    openFamilyPopup('Mohammad Mujeeb Hashmi');
+});
+
+document.getElementById("ayaz-btn").addEventListener("click", function() {
+    openFamilyPopup('Mohammad Ayaz Hashmi');
+});
+
+// Function to show pop-up
+function showPopup(id) {
+    document.getElementById(id).style.display = 'block';
+}
+
+// Close all pop-ups
+function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+}
